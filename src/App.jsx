@@ -9,9 +9,9 @@ const entries = [
 
 const moodEmoji = (score) => {
   if (score >= 4) {
-    return "😄";
+    return "😄";x
   }
-  if (score = 3) {
+  if (score === 3) {
     return "🙂"
   }
   if (score <= 2) {
@@ -25,7 +25,7 @@ function App() {
 
   return (
     <div>
-      <h1>moodHeaven</h1>
+      <h1>MindHaven</h1>
       <p>Feeling Sad or Anxious? Talk about it, you'll feel better</p>
       <ul>
         {entries.map((entry) => (
