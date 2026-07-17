@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './App.css'
 
 const entries = [
@@ -9,7 +8,7 @@ const entries = [
 
 const moodEmoji = (score) => {
   if (score >= 4) {
-    return "😄";x
+    return "😄";
   }
   if (score === 3) {
     return "🙂"
@@ -21,12 +20,10 @@ const moodEmoji = (score) => {
 
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div>
-      <h1>MindHaven</h1>
-      <p>Feeling Sad or Anxious? Talk about it, you'll feel better</p>
+      <h1>Mindscape</h1>
+      <p>No fixing. Just understanding.</p>
       <ul>
         {entries.map((entry) => (
           <li key={entry.id}>
