@@ -1,3 +1,6 @@
+import Header from "./components/Header.jsx"
+import CrisisBanner from "./components/CrisisBanner.jsx"
+import MoodList from "./components/MoodList.jsx"
 import './App.css'
 
 const entries = [
@@ -6,31 +9,14 @@ const entries = [
   { id: 3, mood: "hopeful", score: 5}
 ];
 
-const moodEmoji = (score) => {
-  if (score >= 4) {
-    return "😄";
-  }
-  if (score === 3) {
-    return "🙂"
-  }
-  if (score <= 2) {
-    return "😞"
-  }
-}
 
 
 function App() {
   return (
     <div>
-      <h1>Mindscape</h1>
-      <p>No fixing. Just understanding.</p>
-      <ul>
-        {entries.map((entry) => (
-          <li key={entry.id}>
-            {moodEmoji(entry.score)} {entry.mood} ({entry.score}/5)
-      </li>
-      ))}
-      </ul>
+      <Header tagline="No fixing, just understanding." />
+      <MoodList entries={entries} />
+      <CrisisBanner />
     </div>
   )
 }
