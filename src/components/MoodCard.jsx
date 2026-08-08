@@ -1,5 +1,4 @@
-function MoodCard({ mood }) {
-    const moodEmoji = (score) => {
+const moodEmoji = (score) => {
     if (score >= 4) {
         return "😄";
     }
@@ -10,4 +9,14 @@ function MoodCard({ mood }) {
         return "😞"
     }
 }
+
+function MoodCard({ entry, onDelete }) {
+    return (
+        <li>
+            {moodEmoji(entry.score)} {entry.mood} ({entry.score}/5)
+            <button onClick={() => onDelete(entry.id)}>Delete</button>
+        </li>
+    )
 }
+
+export default MoodCard;

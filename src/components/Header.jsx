@@ -4,6 +4,8 @@ function Header({tagline}) {
             <h1>Mindscape</h1>
             <p>{tagline}</p>
         </div>
-        
+
     )
 }
+
+export default Header
