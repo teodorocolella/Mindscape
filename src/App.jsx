@@ -1,9 +1,12 @@
 import Header from "./components/Header.jsx"
-import CheckInForm from "./components/CheckInForm.jsx"
 import CrisisBanner from "./components/CrisisBanner.jsx"
-import MoodList from "./components/MoodList.jsx"
 import './App.css'
 import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CheckInPage from "./pages/CheckInPage.jsx";
+import HistoryPage from "./pages/HistoryPage.jsx";
+import BreathePage from "./pages/BreathePage.jsx";
+import ResourcesPage from "./pages/ResourcesPage.jsx";
 
 const seedEntries = [
   { id: 1, mood: "calm", score:4 },
@@ -19,13 +22,19 @@ function App() {
   const deleteEntry = (id) => setEntries(entries.filter((entry) => entry.id !== id));
 
   return (
-    <div>
+    <BrowserRouter>
       <Header tagline="No fixing, just understanding." />
-      <CheckInForm onAdd={addEntry} />
-      <MoodList entries={entries} onDelete={deleteEntry} />
+      <Routes>
+        <Route path="/" element={<CheckInPage entries={entries} onAdd={addEntry} onDelete={deleteEntry} />} />
+        <Route path="/history" element={<HistoryPage entries={entries} onDelete={deleteEntry} />} />
+        <Route path="/breathe" element={<BreathePage />} />
+        <Route path="/resources" element={<ResourcesPage />} />
+        <Route path="*" element={<p>Page not found</p>} />
+      </Routes>
       <CrisisBanner />
-    </div>
-  )
+    </BrowserRouter>
+  );
 }
+
 
 export default App
