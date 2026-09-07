@@ -43,11 +43,12 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
-      <Header tagline="No fixing, just understanding." />
-      {loading ? <p>Loading your entries...</p> : (
-      <Routes>
-        <Route path="/" element={<CheckInPage entries={entries} onAdd={addEntry} onDelete={deleteEntry} />} />
+    <main className="page">
+      <BrowserRouter>
+        <Header tagline="No fixing, just understanding." />
+        {loading ? <p>Loading your entries...</p> : (
+        <Routes>
+          <Route path="/" element={<CheckInPage entries={entries} onAdd={addEntry} onDelete={deleteEntry} />} />
         <Route path="/history" element={<HistoryPage entries={entries} onDelete={deleteEntry} />} />
         <Route path="/breathe" element={<BreathePage />} />
         <Route path="/resources" element={<ResourcesPage />} />
@@ -56,6 +57,7 @@ function App() {
       )}
       <CrisisBanner />
     </BrowserRouter>
+  </main>
   );
 }
 

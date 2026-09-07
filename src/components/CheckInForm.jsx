@@ -17,7 +17,7 @@ function CheckInForm({ onAdd }) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="card" onSubmit={handleSubmit}>
             <label htmlFor="mood">Mood:</label>
             <select name="mood" id="mood" required value={mood} onChange={(e) => setMood(e.target.value)}>
                 <option value="" disabled>How are you feeling?</option>

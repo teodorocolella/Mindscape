@@ -1,16 +1,16 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Header({tagline}) {
     return (
-        <div>
+        <div className="site-header">
             <h1>Mindscape</h1>
-            <p>{tagline}</p>
+            <p className="tagline">{tagline}</p>
             <nav>
                 <ul>
-                    <li><Link to="/">Check In</Link></li>
-                    <li><Link to="/history">History</Link></li>
-                    <li><Link to="/breathe">Breathe</Link></li>
-                    <li><Link to="/resources">Resources</Link></li>
+                    <li><NavLink to="/">Check In</NavLink></li>
+                    <li><NavLink to="/history">History</NavLink></li>
+                    <li><NavLink to="/breathe">Breathe</NavLink></li>
+                    <li><NavLink to="/resources">Resources</NavLink></li>
                 </ul>
             </nav>
         </div>
