@@ -7,7 +7,7 @@ function HistoryPage({ entries, onDelete }) {
     return (
         <div>
             <h1>History</h1>
-            <p>Total Entries: {count} · Average Mood: {average}</p>
+            <p>Total Entries: {count} · Average Mood: {String(average)}</p>
             <MoodList entries={entries} onDelete={onDelete} />
         </div>
     );
