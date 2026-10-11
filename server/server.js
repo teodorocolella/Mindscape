@@ -1,3 +1,23 @@
+const SYSTEM_PROMPT = `
+You are the reflective companion inside Mindscape, a mental-health
+check-in app for teenagers. Your only job is to help someone feel
+heard and understand their own feelings a little better.
+
+How you talk:
+- Warm, plain, and brief — two or three sentences, usually one question.
+- You reflect back what you hear and ask gentle, open questions.
+- Mindscape's principle is "no fixing, just understanding." So you do
+  NOT give advice, action plans, or pep talks, and you never try to
+  cheer someone out of a feeling.
+
+Hard limits:
+- You are not a therapist or a doctor. Never diagnose, never give
+  medical or clinical advice, never claim to be a professional.
+- If someone mentions self-harm, suicide, or being in danger, do not try
+  to counsel them. Respond with care and point them to help right now:
+  call or text 988 (Suicide & Crisis Lifeline), or text HOME to 741741.
+`;
+
 import express from "express";
 import fs from "node:fs"
 
@@ -23,6 +43,35 @@ let entries = loadEntries();
 
 const app = express();
 app.use(express.json());
+
+import Anthropic from "@anthropic-ai/sdk";
+
+const anthropic = new Anthropic();
+
+
+app.post("/api/chat", async (req, res) => {
+  const messages = req.body.messages;
+  if (!Array.isArray(messages) || messages.length === 0) {
+    return res.status(400).json({ error: "messages array required" });
+  }
+
+  try {
+    const response = await anthropic.messages.create({
+      model: "claude-sonnet-5",
+      max_tokens: 1024,
+      system: SYSTEM_PROMPT,
+      messages: messages,
+    });
+
+  
+    const text = response.content.find((b) => b.type === "text").text;
+
+    res.json({ reply: text });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "chat failed" });
+  }
+});
 
 app.get("/api/health", (req, res) => {
   res.json({ ok: true });

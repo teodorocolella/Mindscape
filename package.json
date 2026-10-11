@@ -8,10 +8,10 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server": "node --watch server/server.js"
+    "server": "node --watch --env-file=.env server/server.js"
   },
   "dependencies": {
-    "express": "^5.2.1",
+    "@anthropic-ai/sdk": "^0.128.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-router-dom": "^7.18.2"

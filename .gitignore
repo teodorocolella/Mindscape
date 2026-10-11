@@ -23,6 +23,7 @@ server/entries.json
 *.njsproj
 *.sln
 *.sw?
+.env
 
 # user data - never commit
 server/entries.json
